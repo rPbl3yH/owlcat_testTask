@@ -2,8 +2,6 @@ using UnityEngine;
 
 public static class MeshIntersection
 {
-    private const float EPS = 1e-6f;
-    
     public static bool RaycastDown(MeshGeometryEntry entry, Vector3 worldOrigin, out float hitY)
     {
         hitY = float.NaN;
@@ -56,7 +54,7 @@ public static class MeshIntersection
         Vector3 edge2 = v2 - v0;
         Vector3 pvec = Vector3.Cross(dir, edge2);
         float det = Vector3.Dot(edge1, pvec);
-        if (Mathf.Abs(det) < EPS) return false;
+        if (Mathf.Abs(det) < Constants.EPSILON) return false;
         float invDet = 1f / det;
 
         Vector3 tvec = origin - v0;
